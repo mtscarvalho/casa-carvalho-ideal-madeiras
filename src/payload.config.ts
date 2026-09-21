@@ -16,8 +16,6 @@ import { Products } from "@/collections/Products/config";
 import { ProductsCategory } from "@/collections/ProductsCategory/config";
 import { Users } from "@/collections/Users/config";
 
-import { ProductsPattern } from "./collections/ProductsPattern/config";
-import { ProductsSpecies } from "./collections/ProductsSpecies/config";
 import { Homepage } from "./globals/Homepage/config";
 
 const filename = fileURLToPath(import.meta.url);
@@ -93,7 +91,7 @@ export default buildConfig({
       }),
     ],
   }),
-  collections: [Users, Posts, Media, Products, ProductsCategory, ProductsSpecies, ProductsPattern],
+  collections: [Users, Posts, Media, Products, ProductsCategory],
   globals: [Homepage],
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({

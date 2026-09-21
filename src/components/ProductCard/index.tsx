@@ -1,14 +1,17 @@
 import { Media, Product } from "@/payload-types";
 import Link from "next/link";
 import { PayloadImage } from "../Payload/Image";
+import { Button } from "../ui/button";
 
-export function ProductCard({ title, image, description, relPermalink }: Product) {
+export function ProductCard({ title, images, description, relPermalink }: Product) {
   return (
-    <Link href={relPermalink} className="bg-copper-50 border-copper-100 relative block h-full space-y-2 rounded-md border p-3 text-base">
-      <PayloadImage image={image as Media} alt={title} className="mb-5 aspect-3/4 rounded-md object-cover" />
-      <h3 className="text-primary text-xl leading-[1.2] font-bold text-balance">{title}</h3>
-      <p className="">{description}</p>
-      <span className="bg-copper-700 absolute top-6 left-6 rounded-md border border-white px-2 py-1 text-xs text-white">Fabricação própia</span>
+    <Link href={relPermalink} className="bg-cararra-50 border-cararra-200 relative block h-full space-y-2 rounded-md border p-3 text-base">
+      <PayloadImage image={images[0] as Media} alt={title} className="mb-5 aspect-square rounded-md object-cover" />
+      <h3 className="text-xl leading-[1.2] font-bold text-balance text-blue-950">{title}</h3>
+      <p className="line-clamp-3 text-xs">{description}</p>
+      <Button variant={"whatsapp"} size={"sm"}>
+        Orçamento
+      </Button>
     </Link>
   );
 }

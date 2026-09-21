@@ -10,6 +10,12 @@ export const ProductsCategory: CollectionConfig = {
     singular: "Categoria",
     plural: "Categorias",
   },
+  access: {
+    read: () => true,
+    create: () => false,
+    update: () => true,
+    delete: () => false,
+  },
   admin: {
     useAsTitle: "title",
     group: "Produtos",
@@ -30,7 +36,7 @@ export const ProductsCategory: CollectionConfig = {
   },
   fields: [
     slugField(),
-    relPermalinkField("/produtos/tipos"),
+    relPermalinkField("/produtos/categorias"),
     {
       name: "title",
       label: "Título",

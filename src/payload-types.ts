@@ -72,8 +72,6 @@ export interface Config {
     media: Media;
     products: Product;
     productsCategory: ProductsCategory;
-    productsSpecies: ProductsSpecy;
-    productsPattern: ProductsPattern;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -83,12 +81,6 @@ export interface Config {
     productsCategory: {
       products: 'products';
     };
-    productsSpecies: {
-      products: 'products';
-    };
-    productsPattern: {
-      products: 'products';
-    };
   };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
@@ -96,8 +88,6 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     productsCategory: ProductsCategorySelect<false> | ProductsCategorySelect<true>;
-    productsSpecies: ProductsSpeciesSelect<false> | ProductsSpeciesSelect<true>;
-    productsPattern: ProductsPatternSelect<false> | ProductsPatternSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -220,47 +210,16 @@ export interface Media {
  */
 export interface Product {
   id: number;
-  title: string;
   category: number | ProductsCategory;
-  specie: number | ProductsSpecy;
-  scientificName?: string | null;
-  collection?: string | null;
+  title: string;
   description: string;
-  images?:
-    | {
-        media: number | Media;
-        color?: ('warm' | 'cool') | null;
-        badge?: ('ia' | 'real') | null;
-        id?: string | null;
-      }[]
-    | null;
+  images: (number | Media)[];
   sizes?:
     | {
-        width?: string | null;
-        length?: string | null;
-        thickness?: string | null;
-        price?: {
-          materialOnly?: {
-            priceOf?: number | null;
-            price?: number | null;
-          };
-          withInstalation?: {
-            priceOf?: number | null;
-            price?: number | null;
-          };
-        };
+        size: string;
         id?: string | null;
       }[]
     | null;
-  composition: 'madeira-macica';
-  jointType: 'macho-e-femea';
-  installation: ('grampo' | 'cola' | 'prego' | 'flutuante')[];
-  finish: ('matte' | 'stain')[];
-  pattern: number | ProductsPattern;
-  janka?: string | null;
-  density?: string | null;
-  tutorial: string;
-  image?: (number | null) | Media;
   content: {
     root: {
       type: string;
@@ -278,7 +237,6 @@ export interface Product {
   };
   slug?: string | null;
   relPermalink: string;
-  layout: 'old' | 'new';
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -291,38 +249,6 @@ export interface ProductsCategory {
   id: number;
   slug?: string | null;
   relPermalink: string;
-  title: string;
-  products?: {
-    docs?: (number | Product)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "productsSpecies".
- */
-export interface ProductsSpecy {
-  id: number;
-  title: string;
-  products?: {
-    docs?: (number | Product)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "productsPattern".
- */
-export interface ProductsPattern {
-  id: number;
   title: string;
   products?: {
     docs?: (number | Product)[];
@@ -376,14 +302,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'productsCategory';
         value: number | ProductsCategory;
-      } | null)
-    | ({
-        relationTo: 'productsSpecies';
-        value: number | ProductsSpecy;
-      } | null)
-    | ({
-        relationTo: 'productsPattern';
-        value: number | ProductsPattern;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -488,57 +406,19 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
-  title?: T;
   category?: T;
-  specie?: T;
-  scientificName?: T;
-  collection?: T;
+  title?: T;
   description?: T;
-  images?:
-    | T
-    | {
-        media?: T;
-        color?: T;
-        badge?: T;
-        id?: T;
-      };
+  images?: T;
   sizes?:
     | T
     | {
-        width?: T;
-        length?: T;
-        thickness?: T;
-        price?:
-          | T
-          | {
-              materialOnly?:
-                | T
-                | {
-                    priceOf?: T;
-                    price?: T;
-                  };
-              withInstalation?:
-                | T
-                | {
-                    priceOf?: T;
-                    price?: T;
-                  };
-            };
+        size?: T;
         id?: T;
       };
-  composition?: T;
-  jointType?: T;
-  installation?: T;
-  finish?: T;
-  pattern?: T;
-  janka?: T;
-  density?: T;
-  tutorial?: T;
-  image?: T;
   content?: T;
   slug?: T;
   relPermalink?: T;
-  layout?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -550,28 +430,6 @@ export interface ProductsSelect<T extends boolean = true> {
 export interface ProductsCategorySelect<T extends boolean = true> {
   slug?: T;
   relPermalink?: T;
-  title?: T;
-  products?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "productsSpecies_select".
- */
-export interface ProductsSpeciesSelect<T extends boolean = true> {
-  title?: T;
-  products?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "productsPattern_select".
- */
-export interface ProductsPatternSelect<T extends boolean = true> {
   title?: T;
   products?: T;
   updatedAt?: T;
