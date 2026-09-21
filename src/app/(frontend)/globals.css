@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import "swiper/css";
+@import "swiper/css/effect-fade";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@view-transition {
+  navigation: auto;
+}
+
+@theme {
+  --font-bw-modelica: "bwModelica";
+
+  --color-*: initial;
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafaf9;
+  --color-neutral-100: #f5f5f4;
+  --color-neutral-200: #e6e5e5;
+  --color-neutral-300: #d4d3d3;
+  --color-neutral-400: #a4a2a2;
+  --color-neutral-500: #737171;
+  --color-neutral-600: #545151;
+  --color-neutral-700: #444242;
+  --color-neutral-800: #272626;
+  --color-neutral-900: #1a1919;
+  --color-neutral-950: #0b0a0a;
+  --color-neutral-1000: #000000;
+
+  --color-blue-50: #ecf8ff;
+  --color-blue-100: #d5efff;
+  --color-blue-200: #b4e3ff;
+  --color-blue-300: #81d4ff;
+  --color-blue-400: #46bbff;
+  --color-blue-500: #1b9cff;
+  --color-blue-600: #0380ff;
+  --color-blue-700: #006ff8;
+  --color-blue-800: #0557c8;
+  --color-blue-900: #0c4c9c;
+  --color-blue-950: #092143;
+
+  --color-cararra-50: #f8f6f4;
+  --color-cararra-100: #eae6e0;
+  --color-cararra-200: #dcd5cc;
+  --color-cararra-300: #c6baab;
+  --color-cararra-400: #ae9b89;
+  --color-cararra-500: #9d8572;
+  --color-cararra-600: #907666;
+  --color-cararra-700: #786156;
+  --color-cararra-800: #635049;
+  --color-cararra-900: #51433d;
+  --color-cararra-950: #2b221f;
+
+  --color-straw-50: #faf8f2;
+  --color-straw-100: #f4eee0;
+  --color-straw-200: #e8dbc0;
+  --color-straw-300: #d4b987;
+  --color-straw-400: #caa46d;
+  --color-straw-500: #bf8d50;
+  --color-straw-600: #b17945;
+  --color-straw-700: #93613b;
+  --color-straw-800: #774f35;
+  --color-straw-900: #61412d;
+  --color-straw-950: #342116;
+
+  --color-orange-50: #fdf6ef;
+  --color-orange-100: #faeada;
+  --color-orange-200: #f4d2b4;
+  --color-orange-300: #edb284;
+  --color-orange-400: #e48a53;
+  --color-orange-500: #e0743d;
+  --color-orange-600: #d05426;
+  --color-orange-700: #ac4022;
+  --color-orange-800: #8a3422;
+  --color-orange-900: #6f2e1f;
+  --color-orange-950: #3c150e;
+
+  --color-yellow-50: #fff9eb;
+  --color-yellow-100: #fdeec8;
+  --color-yellow-200: #fcdc8b;
+  --color-yellow-300: #fac44f;
+  --color-yellow-400: #f9b233;
+  --color-yellow-500: #f28b0e;
+  --color-yellow-600: #d76608;
+  --color-yellow-700: #b2460b;
+  --color-yellow-800: #91360f;
+  --color-yellow-900: #772d10;
+  --color-yellow-950: #441504;
+
+  --semantic-color-background-base: var(--color-neutral-50);
+  --semantic-color-background-subtle: var(--color-neutral-100);
+  --semantic-color-background-elevated: var(--color-neutral-0);
+  --semantic-color-background-primary: var(--color-orange-700);
+  --semantic-color-background-primary-hover: var(--color-orange-600);
+  --semantic-color-background-secondary: var(--color-orange-900);
+  --semantic-color-background-secondary-hover: var(--color-orange-800);
+  --semantic-color-background-accent: var(--color-yellow-500);
+  --semantic-color-background-accent-hover: var(--color-yellow-400);
+  --semantic-color-background-disabled: var(--color-neutral-200);
+  --semantic-color-background-danger: #dc2626;
+  --semantic-color-content-body: var(--color-neutral-950);
+  --semantic-color-content-subtle: var(--color-neutral-500);
+  --semantic-color-content-primary: var(--color-orange-700);
+  --semantic-color-content-on-primary: var(--color-neutral-50);
+  --semantic-color-content-secondary: var(--color-orange-900);
+  --semantic-color-content-on-secondary: var(--color-neutral-0);
+  --semantic-color-content-accent: var(--color-yellow-600);
+  --semantic-color-content-on-accent: var(--semantic-color-content-body);
+  --semantic-color-content-disabled: var(--color-neutral-300);
+  --semantic-color-content-on-disabled: var(--color-neutral-400);
+  --semantic-color-content-link: #004a9f;
+  --semantic-color-content-danger: #dc2626;
+  --semantic-color-content-on-danger: var(--color-neutral-0);
+  --semantic-color-border-base: var(--color-neutral-400);
+  --semantic-color-border-subtle: var(--color-neutral-200);
+  --semantic-color-border-primary: var(--color-orange-700);
+  --semantic-color-border-secondary: var(--color-orange-900);
+  --semantic-color-border-accent: var(--color-yellow-500);
+  --semantic-color-border-disabled: var(--color-neutral-300);
+  --semantic-color-border-danger: #dc2626;
+}
+
+.dark {
+  --semantic-color-background-base: var(--color-neutral-1000);
+  --semantic-color-background-subtle: var(--color-neutral-950);
+  --semantic-color-background-elevated: var(--color-neutral-900);
+  --semantic-color-background-primary: var(--color-orange-500);
+  --semantic-color-background-primary-hover: var(--color-orange-400);
+  --semantic-color-background-secondary: var(--color-orange-900);
+  --semantic-color-background-secondary-hover: var(--color-orange-800);
+  --semantic-color-background-accent: var(--color-yellow-600);
+  --semantic-color-background-accent-hover: var(--color-yellow-700);
+  --semantic-color-background-disabled: var(--color-neutral-800);
+  --semantic-color-background-danger: #e55c5c;
+  --semantic-color-content-body: var(--color-neutral-50);
+  --semantic-color-content-subtle: var(--color-neutral-400);
+  --semantic-color-content-primary: var(--color-orange-300);
+  --semantic-color-content-on-primary: var(--color-neutral-0);
+  --semantic-color-content-secondary: var(--color-orange-200);
+  --semantic-color-content-on-secondary: var(--color-neutral-50);
+  --semantic-color-content-accent: var(--color-yellow-500);
+  --semantic-color-content-on-accent: var(--color-neutral-0);
+  --semantic-color-content-disabled: var(--color-neutral-600);
+  --semantic-color-content-on-disabled: var(--color-neutral-800);
+  --semantic-color-content-link: var(--color-orange-300);
+  --semantic-color-content-danger: #e55c5c;
+  --semantic-color-content-on-danger: var(--color-neutral-0);
+  --semantic-color-border-base: var(--color-neutral-700);
+  --semantic-color-border-subtle: var(--color-neutral-800);
+  --semantic-color-border-primary: var(--color-orange-600);
+  --semantic-color-border-secondary: var(--color-orange-800);
+  --semantic-color-border-accent: var(--color-yellow-600);
+  --semantic-color-border-disabled: var(--color-neutral-700);
+  --semantic-color-border-danger: #e55c5c;
+}
+
+@custom-variant hover (&:hover);
+
+@utility bg-* {
+  background-color: --value(--semantic-color-background-*);
+  background-color: --value(--color-*);
+}
+
+@utility text-* {
+  color: --value(--semantic-color-content-*);
+  font-size: --value(--text-*);
+  line-height: --value(--text-* --line-height);
+}
+
+@utility fill-* {
+  --fill-alpha: calc(--modifier(integer) * 1%);
+  --fill-alpha: --modifier([percentage]);
+
+  fill: --alpha(--value(--semantic-color-background-*) / var(--fill-alpha, 100%));
+}
+
+@utility border-* {
+  --border-alpha: calc(--modifier(integer) * 1%);
+  --border-alpha: --modifier([percentage]);
+
+  border-color: --alpha(--value(--semantic-color-border-*) / var(--border-alpha, 100%));
+}
+
+@utility container {
+  @apply mx-auto max-w-[72rem] px-6;
+}
+
+@utility focused {
+  @apply outline-2 outline-offset-2 outline-orange-600 outline-dashed;
+}
+
+@utility display-* {
+  @apply font-medium;
+}
+@utility display-xl {
+  @apply text-[168px] leading-none tracking-[-0.01em];
+}
+@utility display-lg {
+  @apply text-[144px] leading-none tracking-[-0.01em];
+}
+@utility display-md {
+  @apply text-8xl leading-none tracking-[-0.01em];
+}
+@utility display-sm {
+  @apply text-8xl leading-tight;
+}
+@utility display-xs {
+  @apply text-5xl leading-none font-bold text-balance;
+}
+
+@utility heading-* {
+  @apply font-medium;
+}
+@utility heading-xl {
+  @apply text-5xl leading-none font-medium tracking-[-0.01em];
+}
+@utility heading-lg {
+  @apply text-4xl leading-none font-medium tracking-[-0.01em];
+}
+@utility heading-md {
+  @apply text-3xl leading-[1.1em] font-medium tracking-[-0.01em];
+}
+@utility heading-sm {
+  @apply text-2xl leading-tight font-medium;
+}
+@utility heading-xs {
+  @apply text-[1.25rem] leading-tight font-bold;
+}
+
+@utility overtitle {
+  @apply leading-tight font-normal tracking-[0.24em] uppercase;
+}
+
+@layer base {
+  :focus {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    @apply focused;
+  }
+
+  :root {
+    font-size: calc(16px + 0.1vw);
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-bw-modelica text-body grid min-h-screen grid-rows-[auto_1fr_auto];
+  }
+
+  main {
+    @apply min-w-0;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  details > summary {
+    @apply cursor-pointer list-none;
+  }
+
+  details > summary::-webkit-details-marker {
+    @apply hidden;
+  }
+}
+
+@layer components {
+  .back-to-top {
+    @apply fixed right-6 bottom-6 z-20 not-focus:sr-only;
+  }
+
+  .skip-to-main {
+    @apply fixed top-6 left-6 z-20 not-focus:sr-only;
+  }
+
+  /* .payload-richtext {
+    @apply space-y-3;
+  }
+
+  .payload-richtext h2 {
+    @apply text-primary pt-4 text-2xl font-bold text-balance;
+  }
+
+  .payload-richtext ul {
+    @apply accent-copper-600 list-outside list-disc space-y-2 pl-4;
+  }
+
+  .payload-richtext li::marker {
+    @apply text-secondary;
+  } */
+}
