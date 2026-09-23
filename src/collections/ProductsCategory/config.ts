@@ -44,6 +44,16 @@ export const ProductsCategory: CollectionConfig = {
       required: true,
     },
     {
+      name: "thumb",
+      label: "Capa",
+      type: "upload",
+      relationTo: "media",
+      required: true,
+      admin: {
+        description: "Use uma imagem de 1200x1200px no formato AVIF. Para redimensionar e otimizar, utilize o Squoosh (https://squoosh.app/).",
+      },
+    },
+    {
       label: "Produtos relacionados",
       type: "group",
       fields: [

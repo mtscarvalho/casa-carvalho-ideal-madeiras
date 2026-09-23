@@ -4,6 +4,7 @@
 
 @import "swiper/css";
 @import "swiper/css/effect-fade";
+/* @import "swiper/css/pagination"; */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -25,7 +26,7 @@
   --color-neutral-600: #545151;
   --color-neutral-700: #444242;
   --color-neutral-800: #272626;
-  --color-neutral-900: #1a1919;
+  --color-neutral-900: #181914;
   --color-neutral-950: #0b0a0a;
   --color-neutral-1000: #000000;
 
@@ -220,7 +221,7 @@
   @apply text-4xl leading-none font-medium tracking-[-0.01em];
 }
 @utility heading-md {
-  @apply text-3xl leading-[1.1em] font-medium tracking-[-0.01em];
+  @apply text-3xl leading-[1.1em] font-bold tracking-[-0.01em];
 }
 @utility heading-sm {
   @apply text-2xl leading-tight font-medium;

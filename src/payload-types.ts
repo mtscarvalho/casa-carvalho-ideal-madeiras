@@ -250,6 +250,10 @@ export interface ProductsCategory {
   slug?: string | null;
   relPermalink: string;
   title: string;
+  /**
+   * Use uma imagem de 1200x1200px no formato AVIF. Para redimensionar e otimizar, utilize o Squoosh (https://squoosh.app/).
+   */
+  thumb: number | Media;
   products?: {
     docs?: (number | Product)[];
     hasNextPage?: boolean;
@@ -431,6 +435,7 @@ export interface ProductsCategorySelect<T extends boolean = true> {
   slug?: T;
   relPermalink?: T;
   title?: T;
+  thumb?: T;
   products?: T;
   updatedAt?: T;
   createdAt?: T;

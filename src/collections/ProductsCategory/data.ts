@@ -21,13 +21,13 @@ export const fetchAllProductCategories = async (): Promise<ProductsCategory[]> =
     },
   });
 
-  // Filtra apenas as categorias que têm posts
-  const filtered = categories.filter((category: ProductsCategory) => {
-    const posts = category?.products?.docs ?? [];
-    return posts.length > 0;
-  });
+  // Filtra apenas as categorias que têm produtos
+  //   const filtered = categories.filter((category: ProductsCategory) => {
+  //     const posts = category?.products?.docs ?? [];
+  //     return posts.length > 0;
+  //   });
 
-  return filtered;
+  return categories;
 };
 
 export const fetchProductCategoryBySlug = async (slug: string): Promise<ProductsCategory> => {
