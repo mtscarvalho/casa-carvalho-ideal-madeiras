@@ -281,19 +281,19 @@
     @apply fixed top-6 left-6 z-20 not-focus:sr-only;
   }
 
-  /* .payload-richtext {
+  .payload-richtext {
     @apply space-y-3;
   }
 
-  .payload-richtext h2 {
+  /* .payload-richtext h2 {
     @apply text-primary pt-4 text-2xl font-bold text-balance;
-  }
+  } */
 
   .payload-richtext ul {
-    @apply accent-copper-600 list-outside list-disc space-y-2 pl-4;
+    @apply list-outside list-disc space-y-2 pl-4 accent-orange-500;
   }
 
-  .payload-richtext li::marker {
+  /* .payload-richtext li::marker {
     @apply text-secondary;
   } */
 }

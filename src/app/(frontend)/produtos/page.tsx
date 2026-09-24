@@ -1,8 +1,5 @@
 import { createMetadata } from "@/utilities/create-metadata";
 
-import { ProductsArchive } from "@/components/ProductsArchive";
-import CallToAction from "@/sections/CallToAction";
-
 export function generateMetadata() {
   return createMetadata({
     path: "/produtos",
@@ -12,15 +9,5 @@ export function generateMetadata() {
 }
 
 export default function Page() {
-  return (
-    <main>
-      <section className="pt-6 pb-24">
-        <div className="container">
-          <ProductsArchive />
-        </div>
-      </section>
-
-      <CallToAction />
-    </main>
-  );
+  return <main></main>;
 }

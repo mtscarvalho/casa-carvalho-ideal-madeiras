@@ -23,6 +23,8 @@ export default async function Page() {
 
   const categories = await fetchAllProductCategories();
 
+  console.log(categories);
+
   return (
     <main>
       <section>
