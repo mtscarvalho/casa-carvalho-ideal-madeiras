@@ -214,12 +214,29 @@ export interface Product {
   title: string;
   description: string;
   images: (number | Media)[];
-  sizes?:
-    | {
-        size: string;
-        id?: string | null;
-      }[]
-    | null;
+  sizes?: {
+    list?:
+      | {
+          /**
+           * Em centímetros.
+           */
+          width?: string | null;
+          /**
+           * Em centímetros.
+           */
+          thickness?: string | null;
+          /**
+           * Em centímetros.
+           */
+          height?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Marque esta opção se o produto também puder ser fabricado em medidas personalizadas.
+     */
+    customMade?: boolean | null;
+  };
   content: {
     root: {
       type: string;
@@ -417,8 +434,15 @@ export interface ProductsSelect<T extends boolean = true> {
   sizes?:
     | T
     | {
-        size?: T;
-        id?: T;
+        list?:
+          | T
+          | {
+              width?: T;
+              thickness?: T;
+              height?: T;
+              id?: T;
+            };
+        customMade?: T;
       };
   content?: T;
   slug?: T;

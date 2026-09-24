@@ -55,10 +55,10 @@ export default async function Page({ params }: PageArgs) {
                       Medidas
                       <Info className="size-4" />
                     </h2>
-                    <ul>
-                      {product.sizes?.map(({ id, size }) => (
-                        <div className="" key={id}>
-                          {size}
+                    <ul className="space-y-1">
+                      {product.sizes?.list?.map((size) => (
+                        <div className="" key={size.id}>
+                          {size.width}cm (L) {size.height}cm (A)
                         </div>
                       ))}
                     </ul>

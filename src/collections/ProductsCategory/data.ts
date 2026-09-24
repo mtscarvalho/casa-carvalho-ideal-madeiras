@@ -30,7 +30,7 @@ export const fetchAllProductCategories = async (): Promise<ProductsCategory[]> =
   return categories;
 };
 
-export const fetchProductCategoryBySlug = async (slug: string): Promise<ProductsCategory> => {
+export const fetchProductCategoryBySlug = async (slug: string): Promise<ProductsCategory | null> => {
   const { isEnabled: draft } = await draftMode();
   const data = await payload.find({
     collection: "productsCategory",
@@ -42,5 +42,5 @@ export const fetchProductCategoryBySlug = async (slug: string): Promise<Products
     },
   });
 
-  return data.docs[0];
+  return data.docs[0] ?? null;
 };

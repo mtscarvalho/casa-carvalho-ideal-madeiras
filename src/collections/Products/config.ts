@@ -65,20 +65,58 @@ export const Products: CollectionConfig = {
     },
     {
       name: "sizes",
-      label: "Medidas",
-      labels: {
-        plural: "Medidas",
-        singular: "Medidas",
-      },
-      type: "array",
+      label: false,
+      type: "group",
       fields: [
         {
-          name: "size",
-          label: false,
-          type: "text",
-          required: true,
+          name: "list",
+          label: "Medidas",
+          labels: {
+            plural: "Medidas",
+            singular: "Medidas",
+          },
+          type: "array",
+          fields: [
+            {
+              type: "row",
+              fields: [
+                {
+                  name: "width",
+                  label: "Largura",
+                  type: "text",
+                  admin: {
+                    placeholder: "80",
+                    description: "Em centímetros.",
+                  },
+                },
+                {
+                  name: "thickness",
+                  label: "Espessura",
+                  type: "text",
+                  admin: {
+                    placeholder: "3,5",
+                    description: "Em centímetros.",
+                  },
+                },
+                {
+                  name: "height",
+                  label: "Altura",
+                  type: "text",
+                  admin: {
+                    placeholder: "210",
+                    description: "Em centímetros.",
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "customMade",
+          label: "Disponível sob medida",
+          type: "checkbox",
           admin: {
-            placeholder: "80x180cm",
+            description: "Marque esta opção se o produto também puder ser fabricado em medidas personalizadas.",
           },
         },
       ],
