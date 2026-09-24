@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 
 import { fetchProducts } from "@/collections/Products/data";
 import { fetchAllProductCategories, fetchProductCategoryBySlug } from "@/collections/ProductsCategory/data";
-import { ProductListing } from "@/components/ProductListing";
-import CallToAction from "@/sections/CallToAction";
+import { CategoryProductFilter } from "@/components/CategoryProductFilter";
 import { createMetadata } from "@/utilities/create-metadata";
 
 type PageArgs = {
@@ -42,10 +41,9 @@ export default async function Page({ params }: PageArgs) {
               {products.length} {products.length === 1 ? "produto disponível" : "produtos disponíveis"}
             </p>
           </div>
-          <ProductListing products={products} categories={categories} activeCategoryId={category.id} />
+          <CategoryProductFilter key={category.id} products={products} categories={categories} categoryId={category.id} />
         </div>
       </section>
-      <CallToAction />
     </main>
   );
 }

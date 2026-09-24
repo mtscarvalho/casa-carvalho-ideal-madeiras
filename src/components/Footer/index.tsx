@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 
 export function Footer() {
   return (
-    <footer className="bg-dune-900 py-12 text-white" data-theme="dark">
+    <footer className="text-neutral-0 bg-blue-950 py-12">
       <div className="container grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-2">
           <h2 className="text-xl font-bold">Sobre nós</h2>

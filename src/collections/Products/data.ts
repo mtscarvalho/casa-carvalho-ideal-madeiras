@@ -26,6 +26,7 @@ export const fetchProductBySlug = async (slug: string): Promise<Product> => {
 
 type FetchProductsOptions = {
   category?: number;
+  excludeId?: number;
   limit?: number;
 };
 
@@ -38,6 +39,14 @@ export const fetchProducts = async (options?: FetchProductsOptions): Promise<Pro
     whereConditions.push({
       category: {
         equals: options.category,
+      },
+    });
+  }
+
+  if (options?.excludeId !== undefined) {
+    whereConditions.push({
+      id: {
+        not_equals: options.excludeId,
       },
     });
   }

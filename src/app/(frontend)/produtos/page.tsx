@@ -1,8 +1,7 @@
-import { createMetadata } from "@/utilities/create-metadata";
 import { fetchProducts } from "@/collections/Products/data";
 import { fetchAllProductCategories } from "@/collections/ProductsCategory/data";
 import { ProductListing } from "@/components/ProductListing";
-import CallToAction from "@/sections/CallToAction";
+import { createMetadata } from "@/utilities/create-metadata";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +28,6 @@ export default async function Page() {
           <ProductListing products={products} categories={categories} />
         </div>
       </section>
-      <CallToAction />
     </main>
   );
 }

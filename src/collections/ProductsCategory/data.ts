@@ -44,3 +44,18 @@ export const fetchProductCategoryBySlug = async (slug: string): Promise<Products
 
   return data.docs[0] ?? null;
 };
+
+export const fetchProductCategoryById = async (id: number): Promise<ProductsCategory | null> => {
+  const { isEnabled: draft } = await draftMode();
+  const { docs } = await payload.find({
+    collection: "productsCategory",
+    depth: 0,
+    draft,
+    limit: 1,
+    where: {
+      and: [{ id: { equals: id } }, ...(draft ? [] : [{ _status: { equals: "published" } }])],
+    },
+  });
+
+  return docs[0] ?? null;
+};

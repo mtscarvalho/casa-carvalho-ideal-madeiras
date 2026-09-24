@@ -285,9 +285,9 @@
     @apply space-y-3;
   }
 
-  /* .payload-richtext h2 {
-    @apply text-primary pt-4 text-2xl font-bold text-balance;
-  } */
+  .payload-richtext h3 {
+    @apply pt-4 text-xl font-bold text-balance;
+  }
 
   .payload-richtext ul {
     @apply list-outside list-disc space-y-2 pl-4 accent-orange-500;

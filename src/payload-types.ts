@@ -224,11 +224,11 @@ export interface Product {
           /**
            * Em centímetros.
            */
-          thickness?: string | null;
+          height?: string | null;
           /**
            * Em centímetros.
            */
-          height?: string | null;
+          thickness?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -438,8 +438,8 @@ export interface ProductsSelect<T extends boolean = true> {
           | T
           | {
               width?: T;
-              thickness?: T;
               height?: T;
+              thickness?: T;
               id?: T;
             };
         customMade?: T;

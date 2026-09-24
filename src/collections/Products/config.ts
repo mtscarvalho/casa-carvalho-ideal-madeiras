@@ -82,7 +82,7 @@ export const Products: CollectionConfig = {
               fields: [
                 {
                   name: "width",
-                  label: "Largura",
+                  label: "Largura (L)",
                   type: "text",
                   admin: {
                     placeholder: "80",
@@ -90,20 +90,20 @@ export const Products: CollectionConfig = {
                   },
                 },
                 {
-                  name: "thickness",
-                  label: "Espessura",
+                  name: "height",
+                  label: "Altura (A)",
                   type: "text",
                   admin: {
-                    placeholder: "3,5",
+                    placeholder: "210",
                     description: "Em centímetros.",
                   },
                 },
                 {
-                  name: "height",
-                  label: "Altura",
+                  name: "thickness",
+                  label: "Espessura (E)",
                   type: "text",
                   admin: {
-                    placeholder: "210",
+                    placeholder: "3,5",
                     description: "Em centímetros.",
                   },
                 },

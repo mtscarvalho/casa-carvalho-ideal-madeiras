@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import { ProductCard } from "@/components/ProductCard";
 import type { Product, ProductsCategory } from "@/payload-types";
@@ -7,9 +8,11 @@ type ProductListingProps = {
   products: Product[];
   categories: ProductsCategory[];
   activeCategoryId?: number;
+  toolbar?: ReactNode;
+  emptyMessage?: string;
 };
 
-export function ProductListing({ products, categories, activeCategoryId }: ProductListingProps) {
+export function ProductListing({ products, categories, activeCategoryId, toolbar, emptyMessage }: ProductListingProps) {
   return (
     <>
       <nav aria-label="Categorias de produtos" className="mb-10 flex flex-wrap gap-2">
@@ -23,17 +26,19 @@ export function ProductListing({ products, categories, activeCategoryId }: Produ
         ))}
       </nav>
 
-      {products.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
-      ) : (
-        <p className="border-subtle bg-subtle rounded-xl border p-8 text-center">
-          {activeCategoryId === undefined ? "Nenhum produto disponível no momento." : "Nenhum produto disponível nesta categoria no momento."}
-        </p>
-      )}
+      <div className="grid grid-cols-[300px_1fr] gap-10">
+        {toolbar}
+
+        {products.length > 0 ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        ) : (
+          <p className="border-subtle bg-subtle rounded-xl border p-8 text-center">{emptyMessage ?? (activeCategoryId === undefined ? "Nenhum produto disponível no momento." : "Nenhum produto disponível nesta categoria no momento.")}</p>
+        )}
+      </div>
     </>
   );
 }
