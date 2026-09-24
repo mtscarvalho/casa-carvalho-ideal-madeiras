@@ -9,6 +9,7 @@ import { buildConfig, TextFieldSingleValidation } from "payload";
 import { pt } from "@payloadcms/translations/languages/pt";
 
 import { seoPlugin } from "@payloadcms/plugin-seo";
+import { s3Storage } from "@payloadcms/storage-s3";
 
 import { Media } from "@/collections/Media/config";
 import { Posts } from "@/collections/Posts/config";
@@ -102,20 +103,20 @@ export default buildConfig({
   },
   sharp,
   plugins: [
-    // s3Storage({
-    //   collections: {
-    //     media: true,
-    //   },
-    //   bucket: process.env.CLOUDFLARE_R2_BUCKET!,
-    //   config: {
-    //     endpoint: new URL(process.env.CLOUDFLARE_R2_ENDPOINT!).href,
-    //     credentials: {
-    //       accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
-    //       secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!,
-    //     },
-    //     region: "auto",
-    //   },
-    // }),
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.CLOUDFLARE_R2_BUCKET!,
+      config: {
+        endpoint: new URL(process.env.CLOUDFLARE_R2_ENDPOINT!).href,
+        credentials: {
+          accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!,
+        },
+        region: "auto",
+      },
+    }),
     seoPlugin({}),
   ],
 });
