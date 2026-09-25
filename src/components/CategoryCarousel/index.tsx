@@ -33,7 +33,7 @@ export function CategoryCarousel({ categories }: CategoryCarouselProps) {
 
         return (
           <SwiperSlide key={category.id} className="h-auto!">
-            <Link href={category.relPermalink} className="group bg-elevated border-subtle focus-visible:focused block h-full overflow-hidden rounded-xl border transition-shadow hover:shadow-lg">
+            <Link href={category.relPermalink} className="group bg-elevated border-subtle focus-visible:focused block h-full overflow-hidden rounded-xl border transition-shadow duration-500 hover:shadow-lg">
               <PayloadImage image={category.thumb as Media} alt={category.title} className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105" />
 
               <div className="space-y-1 p-5">

@@ -8,6 +8,5 @@ type GetWhatsAppUrlParams = {
 
 export function getWhatsAppUrl({ phone = DEFAULT_PHONE, message = DEFAULT_MESSAGE }: GetWhatsAppUrlParams = {}): string {
   const formattedPhone = phone.replace(/\D/g, "");
-
   return `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
 }

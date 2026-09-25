@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
+import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { A11y, Keyboard, Mousewheel, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -7,7 +7,6 @@ import { PayloadImage } from "@/components/Payload/Image";
 import { WhatsApp } from "@/components/SocialIcon";
 import { fetchHomepage } from "@/globals/Homepage/data";
 import { Media } from "@/payload-types";
-import CallToAction from "@/sections/CallToAction";
 import { CreditCard, StarCheck, Zap } from "lucide-react";
 
 export function generateMetadata() {
@@ -95,8 +94,6 @@ export default async function Page() {
           {categories.length > 0 && <CategoryCarousel categories={categories} />}
         </div>
       </section>
-
-      <CallToAction />
     </main>
   );
 }

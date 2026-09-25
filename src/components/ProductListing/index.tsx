@@ -26,11 +26,11 @@ export function ProductListing({ products, categories, activeCategoryId, toolbar
         ))}
       </nav>
 
-      <div className="grid grid-cols-[300px_1fr] gap-10">
+      <div className="grid grid-cols-[300px_1fr] gap-6">
         {toolbar}
 
         {products.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}

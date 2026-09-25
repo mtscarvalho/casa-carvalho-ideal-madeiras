@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,7 +34,7 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
       onResize={updateNavigation}
       slidesPerView={1}
       spaceBetween={16}
-      breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
+      breakpoints={{ 640: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } }}
       className="related-products-carousel!"
       aria-label="Outros produtos da mesma categoria"
     >

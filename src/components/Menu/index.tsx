@@ -39,7 +39,7 @@ export function Menu({ items }: MenuProps) {
   }, [isOpen]);
 
   return (
-    <div className={`relative z-10 w-full overflow-auto py-3 sm:px-6 ${isOpen ? "bg-woodsmoke max-lg:from-neutral-0/50 max-lg:to-neutral-0/20 h-svh" : "h-auto"}`} ref={menuRef}>
+    <div className={`relative z-10 w-full overflow-auto py-2 sm:px-6 ${isOpen ? "bg-woodsmoke max-lg:from-neutral-0/50 max-lg:to-neutral-0/20 h-svh" : "h-auto"}`} ref={menuRef}>
       <div className="container h-full py-2">
         <div className="flex w-full items-center justify-between max-lg:flex-wrap">
           <Link className="block rounded p-1" href="/">
