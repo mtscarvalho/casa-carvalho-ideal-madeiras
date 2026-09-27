@@ -214,6 +214,7 @@ export interface Product {
   category: number | ProductsCategory;
   title: string;
   description: string;
+  warning?: string | null;
   images: (number | Media)[];
   sizes?: {
     list?:
@@ -432,6 +433,7 @@ export interface ProductsSelect<T extends boolean = true> {
   category?: T;
   title?: T;
   description?: T;
+  warning?: T;
   images?: T;
   sizes?:
     | T

@@ -56,6 +56,14 @@ export const Products: CollectionConfig = {
       },
     },
     {
+      name: "warning",
+      label: "Aviso",
+      type: "textarea",
+      admin: {
+        placeholder: "A menor medida possível para esse modelo é 62 cm de largura e a maior medida 92 cm de largura.",
+      },
+    },
+    {
       name: "images",
       label: "Imagem",
       type: "upload",
