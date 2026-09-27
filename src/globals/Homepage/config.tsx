@@ -68,6 +68,21 @@ export const Homepage: GlobalConfig = {
             },
           ],
         },
+        {
+          label: "Destaques",
+          fields: [
+            {
+              name: "featuredProducts",
+              label: "Produtos",
+              type: "relationship",
+              relationTo: "products",
+              hasMany: true,
+              minRows: 4,
+              maxRows: 8,
+              required: true,
+            },
+          ],
+        },
       ],
     },
   ],

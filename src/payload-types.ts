@@ -528,6 +528,7 @@ export interface Homepage {
     };
     id?: string | null;
   }[];
+  featuredProducts: (number | Product)[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -550,6 +551,7 @@ export interface HomepageSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  featuredProducts?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

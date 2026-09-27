@@ -4,9 +4,10 @@ import { fetchAllProductCategories } from "@/collections/ProductsCategory/data";
 import { Carrousel, CarrouselItem, CarrouselPagination, CarrouselWrapper } from "@/components/Carrousel";
 import { CategoryCarousel } from "@/components/CategoryCarousel";
 import { PayloadImage } from "@/components/Payload/Image";
+import { RelatedProductsCarousel } from "@/components/RelatedProductsCarousel";
 import { WhatsApp } from "@/components/SocialIcon";
 import { fetchHomepage } from "@/globals/Homepage/data";
-import { Media } from "@/payload-types";
+import { Media, Product } from "@/payload-types";
 import { CreditCard, StarCheck, Zap } from "lucide-react";
 
 export function generateMetadata() {
@@ -20,6 +21,7 @@ export function generateMetadata() {
 export default async function Page() {
   const page = await fetchHomepage();
   const categories = await fetchAllProductCategories();
+  const featuredProducts = page.featuredProducts.filter((product): product is Product => typeof product !== "number");
 
   return (
     <main>
@@ -80,13 +82,30 @@ export default async function Page() {
         </div>
       </section>
 
-      <section className="bg-subtle py-24">
+      <section className="bg-subtle py-16">
         <div className="container">
-          <div className="mb-10 space-y-2">
-            <h2 className="flex flex-col gap-2">
-              <span className="overtitle">Categorias</span>
-              <span className="heading-md">Escolha por onde começar</span>
-            </h2>
+          <div className="mb-6 space-y-2">
+            <h2 className="heading-md border-accent border-b pb-4">Categorias</h2>
+          </div>
+          {categories.length > 0 && <CategoryCarousel categories={categories} />}
+        </div>
+      </section>
+
+      {featuredProducts.length > 0 && (
+        <section className="py-16">
+          <div className="container">
+            <div className="mb-6 space-y-2">
+              <h2 className="heading-md border-accent border-b pb-4">Produtos em destaque</h2>
+            </div>
+            <RelatedProductsCarousel products={featuredProducts} />
+          </div>
+        </section>
+      )}
+
+      <section className="bg-subtle py-16">
+        <div className="container">
+          <div className="mb-6 space-y-2">
+            <h2 className="heading-md border-accent border-b pb-4"></h2>
           </div>
           {categories.length > 0 && <CategoryCarousel categories={categories} />}
         </div>

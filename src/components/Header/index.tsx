@@ -30,10 +30,8 @@ export async function Header() {
         })),
       ],
     },
-    { label: "Projetos", href: "/projetos" },
-    { label: "Quem somos", href: "/quem-somos" },
-    { label: "Parceria com arquitetos", href: "/parceria-com-arquitetos" },
     { label: "Contato", href: "/contato" },
+    { label: "Orçamento", href: "/contato" },
   ];
 
   return (
