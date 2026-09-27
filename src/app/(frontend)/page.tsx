@@ -19,10 +19,7 @@ export function generateMetadata() {
 
 export default async function Page() {
   const page = await fetchHomepage();
-
   const categories = await fetchAllProductCategories();
-
-  console.log(categories);
 
   return (
     <main>

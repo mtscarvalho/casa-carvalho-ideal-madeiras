@@ -12,7 +12,7 @@ import { ProductsCategory } from "@/payload-types";
 import { formatProductSize } from "@/utilities/format-product-size";
 import { getWhatsAppUrl } from "@/utilities/get-whatsapp-url";
 import { isMediaObject } from "@/utilities/payload/is-media-object";
-import { RulerDimensionLine } from "lucide-react";
+import { AlertCircle, RulerDimensionLine } from "lucide-react";
 import Link from "next/link";
 
 type PageArgs = {
@@ -73,20 +73,31 @@ export default async function Page({ params }: PageArgs) {
                   )}
                   <h1 className="heading-md text-balance">{product.title}</h1>
                   <p className="text-sm">{product.description}</p>
-                  {formattedSizes.length > 0 && (
-                    <div className="border-subtle flex items-baseline justify-between border-y py-2 text-sm">
-                      <div className="flex items-center gap-1 pt-1">
-                        <RulerDimensionLine className="size-4" />
-                        <h2>Medidas</h2>
+                  <div>
+                    {(formattedSizes.length > 0 || product.sizes?.customMade) && (
+                      <div className="border-subtle flex items-start justify-between gap-2 border-y py-3 text-sm">
+                        <div className="flex min-w-32 items-center gap-2">
+                          <RulerDimensionLine className="text-accent size-4" />
+                          <h2>Medidas</h2>
+                        </div>
+                        <ul className="space-y-1">
+                          {formattedSizes.map(({ id, label }, index) => (
+                            <li key={id ?? index}>{label}</li>
+                          ))}
+                          {product.sizes?.customMade && <li>Sob medida</li>}
+                        </ul>
                       </div>
-                      <ul className="space-y-1 pb-2">
-                        {formattedSizes.map(({ id, label }, index) => (
-                          <li key={id ?? index}>{label}</li>
-                        ))}
-                        {product.sizes?.customMade && <li>Sob medida</li>}
-                      </ul>
-                    </div>
-                  )}
+                    )}
+                    {product.warning && (
+                      <div className="border-subtle flex items-start justify-between gap-2 border-b py-3 text-sm">
+                        <div className="flex min-w-32 items-center gap-2">
+                          <AlertCircle className="text-accent size-4" />
+                          <h2>Atenção</h2>
+                        </div>
+                        <p className="text-right text-balance">{product.warning}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <Button variant="default" asChild>
                   <Link href={whatsappMessage} target="_blank" rel="noopener noreferrer">
