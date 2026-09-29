@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageArgs) {
   return createMetadata({
     path: `/produtos/${slug}`,
     title: `${post.title} | Produtos`,
-    description: post.description,
+    description: post.description || "",
   });
 }
 
