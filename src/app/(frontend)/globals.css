@@ -185,7 +185,7 @@
 }
 
 @utility container {
-  @apply mx-auto max-w-[72rem] px-6;
+  @apply mx-auto max-w-6xl px-6;
 }
 
 @utility focused {

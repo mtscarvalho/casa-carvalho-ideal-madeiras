@@ -25,12 +25,24 @@ export default async function Page({ searchParams }: PageProps) {
 
   return (
     <main id="conteudo">
-      <section className="py-16 md:py-24">
+      <section className="pt-12 pb-16">
         <div className="container">
-          <div className="mb-10 space-y-3">
-            <p className="overtitle text-primary text-sm">Catálogo</p>
-            <h1 className="heading-md">{isSearching ? "Resultados da busca" : "Todos os produtos"}</h1>
-            <p className="text-subtle max-w-2xl">{isSearching ? `Resultados para “${searchTerm}”` : "Explore nossa linha de produtos em madeira para o seu projeto."}</p>
+          <div className="mb-8">
+            <div className="flex flex-col gap-2 text-center">
+              {isSearching ? (
+                <>
+                  <h1 className="heading-md">Resultados da busca</h1>
+                  <p className="text-subtle">
+                    Resultados para <span className="text-blue-950">“{searchTerm}”</span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h1 className="heading-md">Todos os produtos</h1>
+                  <p className="text-subtle">Explore nossa linha de produtos em madeira para o seu projeto.</p>
+                </>
+              )}
+            </div>
           </div>
           <ProductListing products={products} categories={categories} emptyMessage={isSearching ? `Nenhum produto encontrado para “${searchTerm}”.` : undefined} />
         </div>

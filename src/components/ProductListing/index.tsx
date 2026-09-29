@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { ProductCard } from "@/components/ProductCard";
@@ -16,22 +15,11 @@ type ProductListingProps = {
 export function ProductListing({ products, categories, activeCategoryId, toolbar, emptyMessage }: ProductListingProps) {
   return (
     <>
-      <nav aria-label="Categorias de produtos" className="mb-10 flex flex-wrap gap-2">
-        <Link href="/produtos" aria-current={activeCategoryId === undefined ? "page" : undefined} className={`rounded-full border px-4 py-2 text-sm transition-colors ${activeCategoryId === undefined ? "border-primary bg-primary text-on-primary" : "border-subtle hover:bg-subtle"}`}>
-          Todos os produtos
-        </Link>
-        {categories.map((category) => (
-          <Link key={category.id} href={category.relPermalink} aria-current={activeCategoryId === category.id ? "page" : undefined} className={`rounded-full border px-4 py-2 text-sm transition-colors ${activeCategoryId === category.id ? "border-primary bg-primary text-on-primary" : "border-subtle hover:bg-subtle"}`}>
-            {category.title}
-          </Link>
-        ))}
-      </nav>
-
-      <div className={cn("grid gap-6", toolbar ? "grid-cols-[300px_1fr]" : "grid-cols-1")}>
+      <div className={cn("grid items-start gap-6", toolbar ? "grid-cols-[300px_1fr]" : "grid-cols-1")}>
         {toolbar}
 
         {products.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={cn("grid gap-4", toolbar ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2 lg:grid-cols-4")}>
             {products.map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}

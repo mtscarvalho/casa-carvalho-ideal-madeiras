@@ -32,14 +32,15 @@ export default async function Page({ params }: PageArgs) {
 
   return (
     <main id="conteudo">
-      <section className="py-16 md:py-24">
+      <section className="pt-12 pb-16">
         <div className="container">
-          <div className="mb-10 space-y-3">
-            <p className="overtitle text-primary text-sm">Categoria de produtos</p>
-            <h1 className="heading-md">{category.title}</h1>
-            <p className="text-subtle">
-              {products.length} {products.length === 1 ? "produto disponível" : "produtos disponíveis"}
-            </p>
+          <div className="mb-10">
+            <div className="flex flex-col gap-2 text-center">
+              <h1 className="heading-md">{category.title}</h1>
+              <p className="text-subtle">
+                {products.length} {products.length === 1 ? "produto disponível" : "produtos disponíveis"}
+              </p>
+            </div>
           </div>
           <CategoryProductFilter key={category.id} products={products} categories={categories} categoryId={category.id} />
         </div>
