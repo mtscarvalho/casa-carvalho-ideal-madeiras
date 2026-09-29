@@ -32,7 +32,7 @@ export default async function Page() {
               {page.hero.map((item) => (
                 <CarrouselItem key={item.id}>
                   <div className="px-6 pt-6">
-                    <PayloadImage className="w-full rounded-xl" image={item.image as Media} loading="eager" />
+                    <PayloadImage className="w-full rounded-xl object-cover max-lg:aspect-video max-md:aspect-square" image={item.image as Media} loading="eager" />
                   </div>
                 </CarrouselItem>
               ))}
@@ -47,9 +47,9 @@ export default async function Page() {
         )}
       </section>
 
-      <section className="py-16">
+      <section className="py-10">
         <div className="container">
-          <ul className="grid grid-cols-4 gap-4">
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <li className="bg-subtle border-subtle flex flex-col gap-2 rounded-xl border p-6">
               <WhatsApp className="text-accent size-8 shrink-0" />
               <div className="text-balance">

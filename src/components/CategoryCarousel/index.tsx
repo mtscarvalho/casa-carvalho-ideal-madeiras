@@ -38,7 +38,6 @@ export function CategoryCarousel({ categories }: CategoryCarouselProps) {
 
               <div className="space-y-1 p-5">
                 <h3 className="text-lg font-bold">{category.title}</h3>
-
                 <p className="text-subtle text-sm">
                   {productCount} {productCount === 1 ? "produto" : "produtos"}
                 </p>

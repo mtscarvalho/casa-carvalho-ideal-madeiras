@@ -10,10 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-on-primary hover:bg-primary-hover",
+        yellow: "bg-yellow-600 text-neutral-0 hover:bg-primary-hover",
         outline: "border-base bg-elevated text-body hover:bg-subtle hover:text-body aria-expanded:bg-subtle aria-expanded:text-body",
         secondary: "bg-secondary text-on-secondary hover:bg-secondary-hover aria-expanded:bg-secondary aria-expanded:text-on-secondary",
         whatsapp: "bg-whatsapp text-white hover:bg-whatsapp-hover aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost: "text-body hover:bg-subtle hover:text-body aria-expanded:bg-subtle aria-expanded:text-body",
+        ghost: "text-body hover:bg-subtle dark:hover:bg-neutral-0/5 hover:text-body dark:aria-expanded:bg-neutral-0/5 aria-expanded:bg-subtle aria-expanded:text-body",
         destructive: "bg-danger text-on-danger hover:bg-danger/80",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -29,7 +30,7 @@ const buttonVariants = cva(
         icon: "size-8",
         "icon-xs": "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
-        "icon-lg": "size-9",
+        "icon-lg": "[&_svg:not([class*='size-'])]:size-8 p-1",
       },
     },
     defaultVariants: {

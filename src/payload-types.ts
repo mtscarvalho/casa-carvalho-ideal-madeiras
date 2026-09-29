@@ -213,7 +213,7 @@ export interface Product {
   id: number;
   category: number | ProductsCategory;
   title: string;
-  description: string;
+  description?: string | null;
   warning?: string | null;
   images: (number | Media)[];
   sizes?: {
@@ -273,6 +273,10 @@ export interface ProductsCategory {
    * Use uma imagem de 1200x1200px no formato AVIF. Para redimensionar e otimizar, utilize o Squoosh (https://squoosh.app/).
    */
   thumb: number | Media;
+  /**
+   * Quanto menor o número, maior prioridade a categoria terá.
+   */
+  order: number;
   products?: {
     docs?: (number | Product)[];
     hasNextPage?: boolean;
@@ -464,6 +468,7 @@ export interface ProductsCategorySelect<T extends boolean = true> {
   relPermalink?: T;
   title?: T;
   thumb?: T;
+  order?: T;
   products?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -54,6 +54,15 @@ export const ProductsCategory: CollectionConfig = {
       },
     },
     {
+      name: "order",
+      label: "Ordem de prioridade",
+      type: "number",
+      required: true,
+      admin: {
+        description: "Quanto menor o número, maior prioridade a categoria terá.",
+      },
+    },
+    {
       label: "Produtos relacionados",
       type: "group",
       fields: [

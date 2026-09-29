@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { ProductCard } from "@/components/ProductCard";
+import { cn } from "@/lib/utils";
 import type { Product, ProductsCategory } from "@/payload-types";
 
 type ProductListingProps = {
@@ -26,7 +27,7 @@ export function ProductListing({ products, categories, activeCategoryId, toolbar
         ))}
       </nav>
 
-      <div className="grid grid-cols-[300px_1fr] gap-6">
+      <div className={cn("grid gap-6", toolbar ? "grid-cols-[300px_1fr]" : "grid-cols-1")}>
         {toolbar}
 
         {products.length > 0 ? (

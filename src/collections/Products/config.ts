@@ -50,7 +50,6 @@ export const Products: CollectionConfig = {
       name: "description",
       label: "Descrição",
       type: "textarea",
-      required: true,
       admin: {
         placeholder: "Altamente resistente, com tons castanho-dourados e acabamento nobre, ideal para ambientes elegantes e de longa durabilidade.",
       },

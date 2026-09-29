@@ -13,8 +13,15 @@ export function generateMetadata() {
   });
 }
 
-export default async function Page() {
-  const [products, categories] = await Promise.all([fetchProducts(), fetchAllProductCategories()]);
+type PageProps = {
+  searchParams: Promise<{ q?: string | string[] }>;
+};
+
+export default async function Page({ searchParams }: PageProps) {
+  const { q } = await searchParams;
+  const searchTerm = (Array.isArray(q) ? q[0] : q)?.trim().slice(0, 100);
+  const [products, categories] = await Promise.all([fetchProducts({ title: searchTerm }), fetchAllProductCategories()]);
+  const isSearching = Boolean(searchTerm);
 
   return (
     <main id="conteudo">
@@ -22,10 +29,10 @@ export default async function Page() {
         <div className="container">
           <div className="mb-10 space-y-3">
             <p className="overtitle text-primary text-sm">Catálogo</p>
-            <h1 className="heading-md">Todos os produtos</h1>
-            <p className="text-subtle max-w-2xl">Explore nossa linha de produtos em madeira para o seu projeto.</p>
+            <h1 className="heading-md">{isSearching ? "Resultados da busca" : "Todos os produtos"}</h1>
+            <p className="text-subtle max-w-2xl">{isSearching ? `Resultados para “${searchTerm}”` : "Explore nossa linha de produtos em madeira para o seu projeto."}</p>
           </div>
-          <ProductListing products={products} categories={categories} />
+          <ProductListing products={products} categories={categories} emptyMessage={isSearching ? `Nenhum produto encontrado para “${searchTerm}”.` : undefined} />
         </div>
       </section>
     </main>
