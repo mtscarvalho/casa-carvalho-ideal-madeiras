@@ -1,10 +1,12 @@
 import { createMetadata } from "@/utilities/create-metadata";
 
 import { fetchAllProductCategories } from "@/collections/ProductsCategory/data";
+import { fetchAllTestimonials } from "@/collections/Testimonials/data";
 import { Carrousel, CarrouselItem, CarrouselPagination, CarrouselWrapper } from "@/components/Carrousel";
 import { CategoryCarousel } from "@/components/CategoryCarousel";
 import { PayloadImage } from "@/components/Payload/Image";
 import { RelatedProductsCarousel } from "@/components/RelatedProductsCarousel";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { WhatsApp } from "@/components/SocialIcon";
 import { fetchHomepage } from "@/globals/Homepage/data";
 import { Media, Product } from "@/payload-types";
@@ -21,6 +23,7 @@ export function generateMetadata() {
 export default async function Page() {
   const page = await fetchHomepage();
   const categories = await fetchAllProductCategories();
+  const testimonials = await fetchAllTestimonials();
   const featuredProducts = page.featuredProducts.filter((product): product is Product => typeof product !== "number");
 
   return (
@@ -52,30 +55,30 @@ export default async function Page() {
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <li className="bg-subtle border-subtle flex flex-col gap-2 rounded-xl border p-6">
               <WhatsApp className="text-accent size-8 shrink-0" />
-              <div className="text-balance">
+              <div className="space-y-1 pt-1 text-balance">
                 <h2 className="font-bold">Compre pelo WhatsApp</h2>
-                <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                <p className="text-sm">Fale com nossa equipe e tire suas dúvidas antes de comprar.</p>
               </div>
             </li>
             <li className="bg-subtle border-subtle flex flex-col gap-2 rounded-xl border p-6">
               <Zap className="text-accent size-8 shrink-0" />
-              <div className="text-balance">
+              <div className="space-y-1 pt-1 text-balance">
                 <h2 className="font-bold">Entrega super rápida</h2>
-                <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                <p className="text-sm">Receba seus produtos com agilidade, segurança e comodidade.</p>
               </div>
             </li>
             <li className="bg-subtle border-subtle flex flex-col gap-2 rounded-xl border p-6">
               <CreditCard className="text-accent size-8 shrink-0" />
-              <div className="text-balance">
+              <div className="space-y-1 pt-1 text-balance">
                 <h2 className="font-bold">Parcelamento em 10x</h2>
-                <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                <p className="text-sm">Parcele suas compras em até 10x e facilite seu pagamento.</p>
               </div>
             </li>
             <li className="bg-subtle border-subtle flex flex-col gap-2 rounded-xl border p-6">
               <StarCheck className="text-accent size-8 shrink-0" />
-              <div className="text-balance">
+              <div className="space-y-1 pt-1 text-balance">
                 <h2 className="font-bold">Segurança e garantia</h2>
-                <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                <p className="text-sm">Compre com tranquilidade, qualidade garantida e suporte especializado.</p>
               </div>
             </li>
           </ul>
@@ -102,14 +105,16 @@ export default async function Page() {
         </section>
       )}
 
-      <section className="bg-subtle py-16">
-        <div className="container">
-          <div className="mb-6 space-y-2">
-            <h2 className="heading-md border-accent border-b pb-4"></h2>
+      {testimonials.length > 0 && (
+        <section className="bg-subtle py-16">
+          <div className="container">
+            <div className="mb-6 space-y-2">
+              <h2 className="heading-md border-accent border-b pb-4">Quem compra, recomenda</h2>
+            </div>
+            <TestimonialsCarousel testimonials={testimonials} />
           </div>
-          {categories.length > 0 && <CategoryCarousel categories={categories} />}
-        </div>
-      </section>
+        </section>
+      )}
     </main>
   );
 }

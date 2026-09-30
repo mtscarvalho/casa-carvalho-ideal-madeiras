@@ -29,7 +29,7 @@ export function CategoryCarousel({ categories }: CategoryCarouselProps) {
       className="category-carousel!"
     >
       {categories.map((category) => {
-        const productCount = category.products?.docs?.length ?? 0;
+        const productCount = category.products?.totalDocs ?? category.products?.docs?.length ?? 0;
 
         return (
           <SwiperSlide key={category.id} className="h-auto!">

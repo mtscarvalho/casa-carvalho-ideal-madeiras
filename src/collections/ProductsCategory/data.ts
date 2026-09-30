@@ -16,6 +16,11 @@ export const fetchAllProductCategories = async (): Promise<ProductsCategory[]> =
     depth: 2,
     draft,
     limit: 0,
+    joins: {
+      products: {
+        count: true,
+      },
+    },
     sort: "order",
     where: {
       and: [...(draft ? [] : [{ _status: { equals: "published" } }])],
