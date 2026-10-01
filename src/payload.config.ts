@@ -17,6 +17,8 @@ import { Products } from "@/collections/Products/config";
 import { ProductsCategory } from "@/collections/ProductsCategory/config";
 import { Users } from "@/collections/Users/config";
 
+import { ProductsColor } from "./collections/ProductsColor/config";
+import { ProductsRoom } from "./collections/ProductsRoom/config";
 import { Testimonials } from "./collections/Testimonials/config";
 import { Homepage } from "./globals/Homepage/config";
 
@@ -93,7 +95,7 @@ export default buildConfig({
       }),
     ],
   }),
-  collections: [Users, Posts, Media, Products, ProductsCategory, Testimonials],
+  collections: [Users, Posts, Media, Products, ProductsCategory, ProductsRoom, ProductsColor, Testimonials],
   globals: [Homepage],
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({

@@ -14,6 +14,8 @@ import { FixedToolbarFeatureClient as FixedToolbarFeatureClient_e70f5e05f09f93e0
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { ConditionalProductAttributeField as ConditionalProductAttributeField_0b3cd085834bf0e2b214b4070df26b48 } from '../../../components/Payload/ConditionalProductAttributeField/index.tsx'
+import { ConditionalProductMeasurementsField as ConditionalProductMeasurementsField_cd41324c6d5c07cd558eee8ca4bfcbcd } from '../../../components/Payload/ConditionalProductMeasurementsField/index.tsx'
 import { default as default_3bad62110f863441cc632684bc7af343 } from '../../../components/Payload/DashboardIcon/index.tsx'
 import { default as default_1a2c36d784547fa77b725a86368390b8 } from '../../../components/Payload/DashboardLogo/index.tsx'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
@@ -37,6 +39,8 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "/components/Payload/ConditionalProductAttributeField/index.tsx#ConditionalProductAttributeField": ConditionalProductAttributeField_0b3cd085834bf0e2b214b4070df26b48,
+  "/components/Payload/ConditionalProductMeasurementsField/index.tsx#ConditionalProductMeasurementsField": ConditionalProductMeasurementsField_cd41324c6d5c07cd558eee8ca4bfcbcd,
   "/components/Payload/DashboardIcon/index.tsx#default": default_3bad62110f863441cc632684bc7af343,
   "/components/Payload/DashboardLogo/index.tsx#default": default_1a2c36d784547fa77b725a86368390b8,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,

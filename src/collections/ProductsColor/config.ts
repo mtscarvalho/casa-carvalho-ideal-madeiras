@@ -2,11 +2,11 @@ import { revalidatePath } from "next/cache";
 
 import type { CollectionConfig } from "payload";
 
-export const ProductsSpecies: CollectionConfig = {
-  slug: "productsSpecies",
+export const ProductsColor: CollectionConfig = {
+  slug: "productsColor",
   labels: {
-    singular: "Essência",
-    plural: "Essências",
+    singular: "Cor",
+    plural: "Cores",
   },
   admin: {
     useAsTitle: "title",
@@ -33,21 +33,21 @@ export const ProductsSpecies: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      label: "Produtos relacionados",
-      type: "group",
-      fields: [
-        {
-          name: "products",
-          label: "Produtos relacionados",
-          type: "join",
-          collection: "products",
-          on: "specie",
-          admin: {
-            defaultColumns: ["title", "image"],
-          },
-        },
-      ],
-    },
+    // {
+    //   label: "Produtos relacionados",
+    //   type: "group",
+    //   fields: [
+    //     {
+    //       name: "products",
+    //       label: "Produtos relacionados",
+    //       type: "join",
+    //       collection: "products",
+    //       on: "colors",
+    //       admin: {
+    //         defaultColumns: ["title", "image"],
+    //       },
+    //     },
+    //   ],
+    // },
   ],
 };

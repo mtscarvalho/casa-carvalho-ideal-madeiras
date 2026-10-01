@@ -72,6 +72,8 @@ export interface Config {
     media: Media;
     products: Product;
     productsCategory: ProductsCategory;
+    productsRoom: ProductsRoom;
+    productsColor: ProductsColor;
     testimonials: Testimonial;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -89,6 +91,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     productsCategory: ProductsCategorySelect<false> | ProductsCategorySelect<true>;
+    productsRoom: ProductsRoomSelect<false> | ProductsRoomSelect<true>;
+    productsColor: ProductsColorSelect<false> | ProductsColorSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -218,6 +222,8 @@ export interface Product {
   description?: string | null;
   warning?: string | null;
   images: (number | Media)[];
+  colors?: (number | ProductsColor)[] | null;
+  rooms?: (number | ProductsRoom)[] | null;
   sizes?: {
     list?:
       | {
@@ -290,6 +296,28 @@ export interface ProductsCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsColor".
+ */
+export interface ProductsColor {
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsRoom".
+ */
+export interface ProductsRoom {
+  id: number;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials".
  */
 export interface Testimonial {
@@ -342,6 +370,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'productsCategory';
         value: number | ProductsCategory;
+      } | null)
+    | ({
+        relationTo: 'productsRoom';
+        value: number | ProductsRoom;
+      } | null)
+    | ({
+        relationTo: 'productsColor';
+        value: number | ProductsColor;
       } | null)
     | ({
         relationTo: 'testimonials';
@@ -456,6 +492,8 @@ export interface ProductsSelect<T extends boolean = true> {
   description?: T;
   warning?: T;
   images?: T;
+  colors?: T;
+  rooms?: T;
   sizes?:
     | T
     | {
@@ -487,6 +525,26 @@ export interface ProductsCategorySelect<T extends boolean = true> {
   thumb?: T;
   order?: T;
   products?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsRoom_select".
+ */
+export interface ProductsRoomSelect<T extends boolean = true> {
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "productsColor_select".
+ */
+export interface ProductsColorSelect<T extends boolean = true> {
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

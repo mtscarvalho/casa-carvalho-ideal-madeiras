@@ -71,9 +71,38 @@ export const Products: CollectionConfig = {
       hasMany: true,
     },
     {
+      name: "colors",
+      label: "Cores",
+      type: "relationship",
+      relationTo: "productsColor",
+      hasMany: true,
+      admin: {
+        components: {
+          Field: "/components/Payload/ConditionalProductAttributeField/index.tsx#ConditionalProductAttributeField",
+        },
+      },
+    },
+    {
+      name: "rooms",
+      label: "Ambientes",
+      type: "relationship",
+      relationTo: "productsRoom",
+      hasMany: true,
+      admin: {
+        components: {
+          Field: "/components/Payload/ConditionalProductAttributeField/index.tsx#ConditionalProductAttributeField",
+        },
+      },
+    },
+    {
       name: "sizes",
       label: false,
       type: "group",
+      admin: {
+        components: {
+          Field: "/components/Payload/ConditionalProductMeasurementsField/index.tsx#ConditionalProductMeasurementsField",
+        },
+      },
       fields: [
         {
           name: "list",
