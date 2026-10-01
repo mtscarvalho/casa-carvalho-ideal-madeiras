@@ -4,7 +4,7 @@ import { GroupField, useFormFields } from "@payloadcms/ui";
 import type { GroupFieldClientProps } from "payload";
 import { useEffect, useState } from "react";
 
-const supportedCategorySlugs = ["portas", "janelas", "pisos", "vitros"];
+const supportedCategorySlugs = ["portas", "janelas", "pisos", "vitros", "puxadores"];
 
 export const ConditionalProductMeasurementsField = (props: GroupFieldClientProps) => {
   const category = useFormFields(([fields]) => fields.category?.value);

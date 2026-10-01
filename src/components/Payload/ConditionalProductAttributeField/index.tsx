@@ -4,11 +4,10 @@ import { RelationshipField, useFormFields } from "@payloadcms/ui";
 import type { RelationshipFieldClientProps } from "payload";
 import { useEffect, useState } from "react";
 
-const supportedCategorySlugs = ["fechaduras", "puxadores"];
-
 export const ConditionalProductAttributeField = (props: RelationshipFieldClientProps) => {
   const category = useFormFields(([fields]) => fields.category?.value);
   const categoryID = typeof category === "object" && category !== null && "id" in category ? category.id : category;
+  const supportedCategorySlugs = props.field.name === "rooms" ? ["fechaduras"] : ["fechaduras", "puxadores"];
   const [isSupportedCategory, setIsSupportedCategory] = useState(false);
 
   useEffect(() => {
